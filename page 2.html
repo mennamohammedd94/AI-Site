@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Register Site</title>
+    <style>
+      body {
+        background-color: #e6e0f8;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #52357b;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #725cad;
+      }
+
+      form {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(82, 53, 123, 0.2);
+        text-align: left;
+      }
+
+      form div,
+      fieldset {
+        margin-bottom: 25px;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #52357b;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="tel"],
+      select {
+        width: 100%;
+        padding: 5px;
+        border-radius: 20px;
+        border: 1px solid #bfa2f7;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        background-color: #fff;
+      }
+
+      input[type="checkbox"],
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+
+      fieldset {
+        border: none;
+        padding: 0;
+      }
+
+      fieldset legend {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #725cad;
+      }
+
+      button {
+        background: #725cad;
+        color: white;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      button:hover {
+        background: #52357b;
+      }
+
+      textarea {
+        width: 70%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #bfa2f7;
+        resize: vertical;
+        font-size: 1rem;
+        margin-top: 10px;
+      }
+
+      h2 {
+        margin-top: 40px;
+        color: #725cad;
+      }
+
+      @media (max-width: 600px) {
+        form {
+          padding: 20px;
+        }
+        textarea {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <h2>Create An Account to make it easy for you</h2>
+
+    <form id="mainForm">
+      <div>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="FirstName" required />
+      </div>
+      <br />
+
+      <div>
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="LastName" required />
+      </div>
+      <br />
+
+      <div style="display: flex; gap: 20px; flex-wrap: wrap">
+        <div>
+          <label for="email">Your New Email</label><br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@gmail.com"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="password">Enter New Password</label><br />
+          <input type="password" id="password" name="Password" required />
+        </div>
+      </div>
+      <br />
+
+      <div>
+        <label for="pnumber">Enter A Phone Number</label>
+        <input type="tel" id="pnumber" name="PhoneNumber" required />
+      </div>
+      <br />
+
+      <fieldset>
+        <p>Select your interests:</p>
+        <label>
+          <input type="checkbox" id="ai" name="interest" value="AI" />
+          Artificial Intelligence </label
+        ><br />
+        <label>
+          <input type="checkbox" id="ml" name="interest" value="ML" />
+          Machine Learning </label
+        ><br />
+        <label>
+          <input type="checkbox" id="cv" name="interest" value="CV" />
+          Computer Vision
+        </label>
+
+        <p>Choose your preferred learning method:</p>
+        <label>
+          <input type="radio" id="videos" name="learning" value="videos" />
+          Videos </label
+        ><br />
+        <label>
+          <input type="radio" id="courses" name="learning" value="courses" />
+          Online Courses </label
+        ><br />
+        <label>
+          <input type="radio" id="reading" name="learning" value="reading" />
+          Reading Articles
+        </label>
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>What do you want to know first?</legend>
+        <select id="pageSelect" required>
+          <option value="">-- Please choose one --</option>
+          <option value="roadmap.html">Roadmap</option>
+
+          <option value="companies.html">AI Companies</option>
+        </select>
+      </fieldset>
+      <br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <h2>Write your Opinion:</h2>
+    <textarea
+      placeholder="Type your opinion here..."
+      rows="4"
+      cols="40"
+    ></textarea
+    ><br /><br />
+    <button>Send</button>
+
+    <script>
+      const form = document.getElementById("mainForm");
+      const pageSelect = document.getElementById("pageSelect");
+
+      form.addEventListener("submit", function (e) {
+        if (pageSelect.value) {
+          form.action = pageSelect.value;
+        } else {
+          e.preventDefault();
+          alert("Please choose what you want to know first.");
+        }
+      });
+    </script>
+  </body>
+</html>
